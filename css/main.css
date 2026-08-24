@@ -1,17 +1,17 @@
 /* Resources */
 @font-face {
     font-family: 'Hylia Serif Beta';
-    src: url(../fonts/HyliaSerifBeta-Regular.ttf');
+    src: url('/fonts/HyliaSerifBeta-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Calamity Sans';
-    src: url(../fonts/Calamity-Regular.otf');
+    src: url('/fonts/Calamity-Regular.otf');
 }
 
 @font-face {
     font-family: 'Calamity Sans Bold';
-    src: url(../fonts/Calamity-Bold.otf');
+    src: url('/fonts/Calamity-Bold.otf');
 }
 
 
