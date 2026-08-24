@@ -1,8 +1,12 @@
+// Set this to your AWS API base URL
+// Example: "https://abcdefghij.execute-api.us-east-2.amazonaws.com/prod"
+const API_BASE_URL = "https://7s8h5llj85.execute-api.us-east-2.amazonaws.com/prod";
+
 // Checks the username with the server, and creates a user account.
 // If invalid, returns false and an account won't be created. Otherwise, return true.
 export async function createUser(email, username){
     // Send username to server
-    const query_string = "https://8n8fsfczsl.execute-api.us-east-2.amazonaws.com/create_user"
+    const query_string = API_BASE_URL + "/create_user"
         + "?email=" + email
         + "&username=" + username;
     const result = await fetch(query_string);
@@ -13,11 +17,10 @@ export async function createUser(email, username){
     return data;
 }
 
-
 // Increments score of player and returns the new korok count, as well as the user's ranking and the korok number
 export async function findKorok(email, korok_id){
     // Send username and korok id to server
-    const query_string = "https://8n8fsfczsl.execute-api.us-east-2.amazonaws.com/find_korok" 
+    const query_string = API_BASE_URL + "/find_korok" 
         + "?email=" + email
         + "&k_id=" + korok_id;
     const result = await fetch(query_string);
@@ -26,11 +29,10 @@ export async function findKorok(email, korok_id){
     return data;
 }
 
-
 // Returns the usernames and korok counts associated with every user, in no order
 export async function getUserScores() {
     // Send request for user scores
-    const query_string = "https://8n8fsfczsl.execute-api.us-east-2.amazonaws.com/get_user_scores";
+    const query_string = API_BASE_URL + "/get_user_scores";
     const result = await fetch(query_string);
     const status = result.status;
     const data = await result.json();
@@ -42,14 +44,13 @@ export async function getUserScores() {
     }
 }
 
-
 /**
  * Returns the korok number and number of times scanned for each Korok, as well as if the
  * user with the `email' has scanned the Korok.
  */
 export async function getKorokInfo(email) {
     // Send request for user scores
-    const query_string = "https://8n8fsfczsl.execute-api.us-east-2.amazonaws.com/get_korok_info"
+    const query_string = API_BASE_URL + "/get_korok_info"
         + (email != null ? "?email=" + email : "");
     const result = await fetch(query_string);
     const status = result.status;
@@ -62,14 +63,13 @@ export async function getKorokInfo(email) {
     }
 }
 
-
 // Sets the koroks position
 export async function setKorok(korok_id, korok_number, korok_type, description, position, admin_password){
     const lat = position.coords.latitude;
     const long = position.coords.longitude;
 
     // Send params to server
-    const query_string = "https://8n8fsfczsl.execute-api.us-east-2.amazonaws.com/set_korok"
+    const query_string = API_BASE_URL + "/set_korok"
         + "?k_id=" + korok_id
         + "&k_num=" + korok_number
         + "&k_type=" + korok_type
@@ -88,7 +88,6 @@ export async function setKorok(korok_id, korok_number, korok_type, description, 
     // If the status is 200, the username was added to the database
     return status == 200;
 }
-
 
 /**
  * Retrieves the cookie with the given `c_name`
